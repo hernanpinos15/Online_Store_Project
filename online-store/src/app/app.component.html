@@ -4,3 +4,15 @@
 <div *ngIf="title == 'hp'">
     Esto es un ejemplo de un div
 </div>
+
+<button (click)="addItem()">Add item</button>
+
+<ul>
+    <li *ngIf="array.length == 0">
+        La lista esta vacia
+    </li>
+    <li *ngFor="let name of array; index as i">
+        {{name}} {{i}}
+        <button (click)="deleteItem(i)">delete</button>
+    </li>
+</ul>

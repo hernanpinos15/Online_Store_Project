@@ -7,4 +7,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'online-store';
+
+  array = ['1', '2', '3', '4'];
+  addItem() {
+    this.array.push(this.title);
+  }
+
+  deleteItem(index: number) {
+    this.array.splice(index, 1);
+  }
+
 }
