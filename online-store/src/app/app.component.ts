@@ -65,4 +65,8 @@ export class AppComponent {
     this.array.splice(index, 1);
   }
 
+  clickProduct(id: number){
+    console.log('product: '+ "id: "+id);
+  }
+
 }
