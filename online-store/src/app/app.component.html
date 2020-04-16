@@ -2,7 +2,22 @@
 {{ title}}
 
 <div *ngIf="title == 'hp'">
-    Esto es un ejemplo de un div
+    Este es un hp
+</div>
+
+<div *ngIf="title == 'ph'">
+    Esto es un ph
+</div>
+
+<div *ngIf="title == 'nadie'">
+    Este es nadie
+</div>
+
+<div [ngSwitch]="title">
+    <p *ngSwitchCase="'hp'">Este es un hp</p>
+    <p *ngSwitchCase="'ph'">Esto es un ph</p>
+    <p *ngSwitchCase="'nadie'">Este es nadie</p>
+    <p *ngSwitchDefault>no hay nada</p>
 </div>
 
 <button (click)="addItem()">Add item</button>
