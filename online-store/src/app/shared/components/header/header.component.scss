@@ -1,8 +1,21 @@
+@import '~@angular/material/theming';
+
+$primary: mat-palette($mat-cyan);
+
 nav > a {
   padding: 5px;
   text-decoration: none;
 }
 
 nav > a.active {
-  background-color: blue;
+  background-color: #00acc1;
+}
+
+.header-row{
+  width: 100%;
+}
+
+.header-toolbar {
+  margin-bottom: 20px;
+  background-color: mat-color($primary);
 }
