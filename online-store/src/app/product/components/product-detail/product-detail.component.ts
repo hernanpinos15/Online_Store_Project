@@ -33,4 +33,19 @@ export class ProductDetailComponent implements OnInit {
       });
   }
 
+  createProduct() {
+    const newProduct: Product = {
+      id: '0000001',
+      title: 'nuevo desde angular (moto)',
+      image: 'https://i.imgur.com/jRAjVHB.jpg',
+      price: 1000,
+      description: 'nuevo producto'
+
+    };
+    this.productsService.createProduct(newProduct)
+      .subscribe(product => {
+        console.log(product);
+      });
+  }
+
 }
