@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 import { Product } from '../../models/product.model';
 
@@ -7,6 +8,19 @@ import { Product } from '../../models/product.model';
 })
 export class ProductsService {
 
+  constructor(
+    private http: HttpClient
+  ) { }
+
+  getAllProducts(){
+    return this.http.get<Product[]>('http://platzi-store.herokuapp.com/products');
+  }
+
+  getProduct(id: string){
+    return this.http.get('http://platzi-store.herokuapp.com/products/${id}');
+  }
+
+  /*Sin el API
   products: Product[] = [
     {
       id: '1',
@@ -52,8 +66,6 @@ export class ProductsService {
     }
   ];
 
-  constructor() { }
-
   getAllProducts(){
     return this.products;
   }
@@ -61,4 +73,5 @@ export class ProductsService {
   getProduct(id: string){
     return this.products.find(item => id === item.id);
   }
+  */
 }
