@@ -30,8 +30,12 @@ export class ProductsListComponent implements OnInit {
   deleteProduct(id: string){
     this.productsService.deleteProduct(id)
     .subscribe(rta => {
-      console.log(rta);
-      this.fectchProduct();
+      if (rta){
+        console.log('Se elimino');
+        this.products = this.products.filter(product => product.id !== id);
+      }else{
+        console.log('No se elimino');
+      }
     });
   }
 }
