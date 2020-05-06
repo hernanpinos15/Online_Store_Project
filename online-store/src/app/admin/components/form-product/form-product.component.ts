@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MyValidators } from './../../../utils/validators';
 
 import { ProductsService } from './../../../core/services/products/products.service';
 
@@ -24,27 +25,29 @@ export class FormProductComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  saveProduct(event: Event){
+  saveProduct(event: Event) {
     event.preventDefault();
-    if (this.form.valid){
-      const product = this.form.value;
-      this.productsService.createProduct(product)
-      .subscribe((newProduct) => {
-        console.log(newProduct);
-        this.router.navigate(['./admin/products']);
-      });
-    }else{
-      console.log('ver');
+    if (this.form.valid) {
+      const productSend = this.form.value;
+      this.productsService.createProduct(productSend)
+        .subscribe((newProduct) => {
+          console.log(newProduct);
+          this.router.navigate(['./admin/products']);
+        });
     }
   }
 
-  private builForm(){
+  private builForm() {
     this.form = this.formBuilder.group({
       id: ['', [Validators.required]],
-      title: ['', [Validators.required]],
-      price: ['', [Validators.required]],
       image: [''],
+      title: ['', [Validators.required]],
+      price: ['', [Validators.required, MyValidators.isPriceValid]],
       description: ['', [Validators.required]],
     });
+  }
+
+  get priceField() {
+    return this.form.get('price');
   }
 }

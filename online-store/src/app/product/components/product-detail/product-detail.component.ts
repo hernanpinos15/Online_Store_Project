@@ -40,7 +40,6 @@ export class ProductDetailComponent implements OnInit {
       image: 'https://i.imgur.com/jRAjVHB.jpg',
       price: 1000,
       description: 'nuevo producto'
-
     };
     this.productsService.createProduct(newProduct)
       .subscribe(product => {
