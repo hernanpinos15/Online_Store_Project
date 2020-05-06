@@ -23,6 +23,7 @@ export class ProductsListComponent implements OnInit {
   fectchProduct(){
     this.productsService.getAllProducts()
     .subscribe(products => {
+      console.log(products);
       this.products = products;
     });
   }
